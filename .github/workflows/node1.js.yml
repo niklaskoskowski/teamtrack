@@ -28,9 +28,14 @@ jobs:
       - name: Run build
         run: npm run build
 
+      - name: Debug build output
+        run: |
+          echo "Listing public/build directory:"
+          ls -R public/build || echo "public/build not found"
+
       - name: Upload build artifacts
         uses: actions/upload-artifact@v3
         with:
           name: build-artifact
-          # adjust the path below if your build outputs elsewhere
+          # Ensure this path matches your build output directory
           path: public/build
